@@ -1,0 +1,23 @@
+# Secrets — CHI TEN BIEN, KHONG GIA TRI THAT.
+# Copy file nay thanh `.dev.vars` (da bi .gitignore chan) roi dien
+# gia tri that de chay `wrangler dev` local. KHONG commit `.dev.vars`.
+# Tren Cloudflare, set bang `wrangler secret put <TEN>` (xem README.md).
+SUPABASE_URL=
+SUPABASE_SERVICE_ROLE_KEY=
+APPS_SCRIPT_URL=
+# Tuy chon — chi khi da co Turnstile site key + secret:
+# TURNSTILE_SECRET=
+# Email (Resend) — CHI o server, khong commit gia tri that.
+# Domain gui CHUA xac minh DNS (SPF/DKIM/DMARC) — xem src/email/README.md.
+# RESEND_API_KEY=
+# RESEND_FROM_EMAIL=
+# RESEND_WEBHOOK_SECRET=
+# ADMIN_NOTIFY_EMAIL=visfaracademy@gmail.com
+# UNSUBSCRIBE_SECRET=  # Ky token huy dang ky email (TASK 11) — secret rieng, khong dung chung RESEND_API_KEY.
+ALLOWED_ORIGINS=https://visfaracademy.netlify.app,http://localhost:3000,http://localhost:3100
+# SePay — CHI khi SePay duoc phe duyet trien khai (QĐ 15). Khong co
+# SEPAY_WEBHOOK_SECRET thi moi webhook SePay bi tu choi 401.
+# SEPAY_WEBHOOK_SECRET=<redacted>
+# SEPAY_API_TOKEN=<redacted>
+# SEPAY_BANK_ACCOUNT_ID=<redacted>
+# SEPAY_MERCHANT_ID=<redacted>

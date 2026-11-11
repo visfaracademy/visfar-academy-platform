@@ -1,0 +1,33 @@
+# Env — KHONG BAO GIO commit secret
+.env
+.env*.local
+.env.local
+.env.staging
+.env.development.local
+.env.test.local
+.env.production.local
+
+# Deps / build
+node_modules/
+.next/
+.vercel/
+out/
+dist/
+*.tsbuildinfo
+.bin/
+
+# Secrets / credentials — KHONG BAO GIO commit
+*.pem
+*.key
+credentials*.json
+credentials/
+.secrets/
+
+# Cloudflare / Supabase local
+.wrangler/
+.dev.vars
+supabase/.temp/
+
+# OS / editor
+.DS_Store
+*.log

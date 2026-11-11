@@ -1,0 +1,1 @@
+{"compilerOptions":{"declaration":false,"exactOptionalPropertyTypes":false,"forceConsistentCasingInFileNames":true,"lib":["ES2022","DOM","DOM.Iterable"],"module":"ESNext","moduleResolution":"bundler","noUncheckedIndexedAccess":true,"outDir":"dist","skipLibCheck":true,"sourceMap":false,"strict":true,"target":"ES2022","types":["@cloudflare/workers-types"]},"include":["src","test"]}

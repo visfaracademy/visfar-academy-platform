@@ -1,0 +1,7 @@
+# Cloudflare Pages — cau hinh Workers cho @cloudflare/next-on-pages.
+# KHONG ghi secret vao file nay. Env chay production dat trong
+# Cloudflare Dashboard > Pages > Settings > Environment variables.
+name = "visfaracademy"
+compatibility_date = "2025-01-01"
+compatibility_flags = ["nodejs_compat"]
+pages_build_output_dir = ".vercel/output/static"
