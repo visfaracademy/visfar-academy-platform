@@ -1,0 +1,40 @@
+# Cloudflare Workers — Visfar Academy API
+# Domain + tien to da chot (DECISIONS.md Task 02 QĐ 8):
+#   https://visfaracademy.netlify.app/api/v1
+# Domain nay gan cho Worker bang route o Cloudflare dashboard SAU KHI
+# co token (xem README.md § Deploy). Truoc do Worker chay o
+# https://<ten-worker>.workers.dev (workers_dev = true).
+name = "api"
+main = "src/index.ts"
+compatibility_date = "2025-07-18" # muc cao nhat runtime wrangler 3.114 ho tro; nang len khi dung wrangler 4
+workers_dev = true
+
+# KHONG ghi secret o day. Secret chi set bang:
+#   wrangler secret put SUPABASE_URL
+#   wrangler secret put SUPABASE_SERVICE_ROLE_KEY
+#   wrangler secret put APPS_SCRIPT_URL
+#   wrangler secret put TURNSTILE_SECRET   (neu co)
+#   wrangler secret put RESEND_API_KEY
+#   wrangler secret put RESEND_FROM_EMAIL
+#   wrangler secret put RESEND_WEBHOOK_SECRET
+#   wrangler secret put UNSUBSCRIBE_SECRET   (ky token huy dang ky — TASK 11)
+#   wrangler secret put SEPAY_WEBHOOK_SECRET   (chi khi SePay duoc phe duyet — QĐ 15)
+#   wrangler secret put SEPAY_API_TOKEN   (doi soat bu API v2 — chi khi SePay duoc phe duyet)
+# Xem .dev.vars.example (ten bien, khong gia tri that).
+
+[vars]
+# Origin duoc phep goi API tu trinh duyet (phay phan tach).
+# Mac dinh trong code: https://visfaracademy.netlify.app + localhost:3000/3100.
+ALLOWED_ORIGINS = "https://visfaracademy.netlify.app,http://localhost:3000,http://localhost:3100"
+
+[observability]
+enabled = true
+
+# Rate-limit KV (tuy chon, tang cuong do chinh xac qua nhieu isolate):
+# code tu fallback ve bo nho trong-process khi binding nay chua co.
+# Tao sau khi co token:
+#   wrangler kv namespace create RATE_LIMIT_KV
+# roi bo comment 3 dong duoi va dien id that (khong doan id).
+# [[kv_namespaces]]
+# binding = "RATE_LIMIT_KV"
+# id = "<dien id that sau khi tao>"
