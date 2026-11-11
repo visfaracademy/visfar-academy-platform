@@ -1,0 +1,982 @@
+/* Visfar Academy — design tokens (§1.4). Giu nguyen nhan dien hien tai.
+   Khong dung !important de chot cuoi; token la nguon that duy nhat. */
+:root {
+  --bg-ivory: #fdfbf3;
+  --bg-champagne: #f8f1d7;
+  --cream: #f7f5ef;
+  --ink: #16130c;
+  --ink-soft: #4a4232;
+  --gold: #c6a45c;
+  --gold-strong: #a8841c;
+  --gold-dark: #6e4f0a;
+  --gold-mid: #c9a227;
+  --gold-light: #d4af37;
+  --gold-bright: #e8c766;
+  --gold-deep: #8c6d1f;
+  --grad: linear-gradient(105deg, #f4dd8f 0%, #d4af37 42%, #a8841c 78%, #e8c766 100%);
+  --frame: 1380px;
+  --radius: 12px;
+  --shadow: 0 18px 38px rgba(0, 0, 0, 0.38);
+  --font-body: var(--font-bvp, "Be Vietnam Pro"), "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+}
+
+* { box-sizing: border-box; }
+html { font-size: 16px; }
+body {
+  margin: 0;
+  font-family: var(--font-body);
+  font-size: 1rem;
+  line-height: 1.7;
+  color: var(--ink);
+  background-color: #fbf7e9;
+  background-image:
+    repeating-linear-gradient(45deg, rgba(198, 164, 92, 0.05) 0 1px, transparent 1px 28px),
+    repeating-linear-gradient(-45deg, rgba(198, 164, 92, 0.05) 0 1px, transparent 1px 28px),
+    linear-gradient(90deg, #fdfbf3 0%, #fcf9ed 24%, #f8f1d7 50%, #fcf9ed 76%, #fdfbf3 100%);
+}
+p { text-align: justify; text-justify: inter-word; hyphens: auto; overflow-wrap: break-word; }
+/* Van ban than bai trong danh sach (khong nam trong <p>): can deu 2 ben nhu doan van. */
+.phil-list li, .prog-details li, .module-list li, .policy-body li,
+.lesson-content li { text-align: justify; text-justify: inter-word; hyphens: auto; overflow-wrap: break-word; }
+h1, h2, h3 { line-height: 1.3; margin: 0 0 0.5em; }
+a { color: var(--gold-dark); }
+button, input, select { font: inherit; }
+button { min-height: 44px; cursor: pointer; }
+
+.wrap { max-width: var(--frame); margin-inline: auto; padding-inline: clamp(18px, 4.5vw, 32px); }
+
+.gold-title {
+  background: linear-gradient(135deg, #6e4f0a 0%, #a67c00 38%, #c9a227 62%, #d4af37 80%, #e8c766 90%, #8c6d1f 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+}
+.rule { width: 64px; height: 3px; background: var(--gold-mid); border: 0; margin: 1rem 0; }
+
+.btn {
+  display: inline-flex; align-items: center; justify-content: center;
+  min-height: 48px; padding: 0.7rem 1.4rem; border-radius: 8px;
+  border: 2px solid var(--gold); background: linear-gradient(135deg, #c9a227, #d4af37);
+  color: var(--ink); font-weight: 700; text-decoration: none;
+}
+.btn-ghost { background: transparent; color: var(--ink); border-color: rgba(122, 95, 12, 0.55); }
+.btn-gold {
+  background: var(--grad);
+  background-size: 190% 100%;
+  background-position: 0% 50%;
+  color: #171204;
+  border-color: transparent;
+  box-shadow: 0 10px 26px rgba(212, 175, 55, 0.28);
+}
+.btn:disabled { opacity: 0.6; cursor: not-allowed; }
+@media (hover: hover) {
+  .btn:hover { transform: translateY(-2px); box-shadow: 0 16px 32px rgba(212, 175, 55, 0.38); }
+  .btn-gold:hover { background-position: 100% 50%; }
+  .btn-ghost:hover { background: rgba(212, 175, 55, 0.12); box-shadow: none; }
+}
+
+.card {
+  background: #fff; border: 1px solid rgba(168, 132, 28, 0.55);
+  border-radius: var(--radius); padding: 1.25rem;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
+  transition: transform 220ms ease, box-shadow 220ms ease, border-color 220ms ease;
+}
+@media (hover: hover) {
+  .card:hover { transform: translateY(-3px); border-color: rgba(212, 175, 55, 0.6); box-shadow: var(--shadow); }
+}
+
+.site-header { background: var(--bg-ivory); border-bottom: 1px solid rgba(168, 132, 28, 0.35); position: sticky; top: 0; z-index: 10; }
+.site-header .wrap { display: flex; align-items: center; gap: 1rem; min-height: 68px; }
+.brand { font-weight: 900; letter-spacing: 0.08em; text-decoration: none; color: var(--ink); font-size: 1.25rem; }
+.brand span { color: var(--gold); }
+.main-nav { display: flex; gap: 0.25rem; margin-left: auto; flex-wrap: wrap; }
+.main-nav a { padding: 0.6rem 0.8rem; text-decoration: none; color: var(--ink); font-weight: 600; min-height: 44px; display: inline-flex; align-items: center; }
+.main-nav a:hover { color: var(--gold-dark); }
+
+.hero h1 { font-size: clamp(1.75rem, 4vw, 2.8rem); }
+.hero .lead { max-width: 100%; margin: 0 auto; }
+
+.course-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
+@media (max-width: 1020px) { .course-grid { grid-template-columns: repeat(2, 1fr); } }
+@media (max-width: 700px) { .course-grid { grid-template-columns: 1fr; } }
+.course-num { font-weight: 900; color: var(--gold); }
+.pill { display: inline-block; font-size: 0.875rem; font-weight: 700; color: var(--gold-dark); border: 1px solid var(--gold); border-radius: 999px; padding: 0.15rem 0.7rem; }
+.tabs { display: flex; gap: 0.5rem; flex-wrap: wrap; }
+.tab { min-height: 44px; padding: 0.5rem 1rem; border-radius: 999px; border: 1px solid var(--gold); background: #fff; font-weight: 600; }
+.tab[aria-pressed="true"] { background: linear-gradient(135deg, #c9a227, #d4af37); }
+.search { width: 100%; min-height: 50px; font-size: 1rem; padding: 0.6rem 1rem; border: 1px solid rgba(168, 132, 28, 0.6); border-radius: 8px; background: #fff; }
+
+.notice { border: 1px solid rgba(168, 132, 28, 0.6); background: #fff; border-radius: var(--radius); padding: 1rem 1.25rem; }
+.notice.error { border-color: #b3261e; }
+.notice p { margin: 0.25rem 0; }
+.site-footer { border-top: 1px solid rgba(168, 132, 28, 0.35); margin-top: 3rem; padding: 2rem 0; background: var(--bg-champagne); }
+.muted { color: var(--ink-soft); font-size: 0.95rem; }
+.sr-only { position: absolute; width: 1px; height: 1px; overflow: hidden; clip: rect(0 0 0 0); white-space: nowrap; }
+
+/* ===== Task 05 — form tu van / auth / newsletter (chi dung token co san) ===== */
+.field { margin-bottom: 1rem; }
+.field label { display: block; font-weight: 700; margin-bottom: 0.35rem; }
+.field input, .field select, .field textarea {
+  width: 100%; min-height: 50px; padding: 0.7rem 0.9rem; font: inherit; font-size: 1rem;
+  border: 1px solid rgba(168, 132, 28, 0.6); border-radius: 8px; background: #fff; color: var(--ink);
+}
+.field input:focus, .field select:focus, .field textarea:focus { outline: 2px solid var(--gold); outline-offset: 1px; border-color: var(--gold); }
+.field input:disabled, .field select:disabled, .field textarea:disabled { opacity: 0.6; }
+.field-error { color: #b3261e; font-weight: 600; margin: 0.35rem 0 0; }
+.hint { color: var(--ink-soft); font-size: 0.95rem; margin: 0.35rem 0 0; }
+.form-note { color: var(--ink-soft); font-size: 0.95rem; }
+.form-status { margin-top: 0.75rem; }
+.consult-form { margin-top: 1.5rem; }
+/* Honeypot chong spam: an hoan toan voi nguoi that, bot van "thay" va dien vao. */
+.honeypot { position: absolute; left: -9999px; width: 1px; height: 1px; overflow: hidden; }
+.notice.success { border-color: var(--gold); background: var(--bg-champagne); }
+.auth-card { max-width: 560px; margin: 2rem auto; }
+.auth-form { margin-top: 1rem; }
+.account-nav { display: inline-flex; align-items: center; gap: 0.75rem; margin-left: auto; }
+.account-nav a { font-weight: 600; text-decoration: none; color: var(--ink); min-height: 44px; display: inline-flex; align-items: center; }
+.account-nav a:hover { color: var(--gold-dark); }
+.newsletter-form { margin-bottom: 1.5rem; }
+.newsletter-form label { display: block; font-weight: 700; margin-bottom: 0.35rem; }
+.newsletter-row { display: flex; gap: 0.5rem; flex-wrap: wrap; }
+.newsletter-row input {
+  flex: 1 1 240px; min-height: 50px; padding: 0.6rem 1rem; font: inherit; font-size: 1rem;
+  border: 1px solid rgba(168, 132, 28, 0.6); border-radius: 8px; background: #fff; color: var(--ink);
+}
+
+/* ===== Task 06 — student dashboard (chi dung token co san) ===== */
+.dashboard-nav { display: flex; gap: 0.5rem; flex-wrap: wrap; margin: 1rem 0 1.5rem; }
+.dashboard-nav a {
+  min-height: 44px; padding: 0.6rem 1rem; display: inline-flex; align-items: center;
+  border: 1px solid var(--gold); border-radius: 999px; background: #fff;
+  font-weight: 600; text-decoration: none; color: var(--ink);
+}
+.dashboard-nav a[aria-current="page"] { background: linear-gradient(135deg, #c9a227, #d4af37); color: var(--ink); }
+.stat-grid { display: grid; grid-template-columns: repeat(5, 1fr); gap: 1rem; }
+@media (max-width: 1020px) { .stat-grid { grid-template-columns: repeat(3, 1fr); } }
+@media (max-width: 700px) { .stat-grid { grid-template-columns: repeat(2, 1fr); } }
+.stat-card {
+  background: #fff; border: 1px solid rgba(168, 132, 28, 0.55);
+  border-radius: var(--radius); padding: 1rem 1.25rem; text-align: center;
+}
+.stat-card p { margin: 0.25rem 0; }
+.stat-num { font-size: 1.75rem; font-weight: 900; color: var(--gold-dark); }
+.progress-track { height: 12px; border-radius: 999px; background: var(--bg-champagne); border: 1px solid rgba(168, 132, 28, 0.55); overflow: hidden; }
+.progress-fill { height: 100%; background: linear-gradient(135deg, #c9a227, #d4af37); border-radius: 999px; }
+.avatar { border-radius: 50%; object-fit: cover; border: 2px solid var(--gold); }
+.avatar-lg { width: 96px; height: 96px; display: block; margin-bottom: 1rem; }
+.dashboard-list { list-style: none; margin: 0; padding: 0; display: grid; gap: 1rem; }
+.dashboard-list .list-row {
+  background: #fff; border: 1px solid rgba(168, 132, 28, 0.55);
+  border-radius: var(--radius); padding: 1rem 1.25rem;
+}
+.dashboard-list .list-row.unread { border-color: var(--gold); background: var(--bg-champagne); }
+.dashboard-list .list-row p { margin: 0.25rem 0; }
+.module-list { margin: 0.75rem 0 0; padding-left: 1.25rem; }
+.module-list li { margin: 0.25rem 0; }
+
+/* ===== Task 06 — auth (chi dung token co san) ===== */
+/* Lien ket phu duoi form auth (quen mat khau / dang ky / quay lai). */
+.auth-links { display: flex; flex-direction: column; gap: 0.5rem; margin-top: 1rem; }
+.auth-links a { min-height: 44px; display: inline-flex; align-items: center; }
+
+/* ===== Task 06 — SECURITY TEST + UX: header khong tran ngang o mobile =====
+   Phat hien: .site-header .wrap la flex 1 hang, khong wrap (brand + 5 link
+   nav + AccountNav + nut CTA ~1000px) nen o 390px tran ngang. Sua chi bang
+   CSS, khong doi chu/thu tu: <=900px cho wrap, nav xuong hang rieng, CTA
+   full-width; AccountNav duoc wrap khi ten dai (da dang nhap). */
+@media (max-width: 900px) {
+  .site-header .wrap { flex-wrap: wrap; row-gap: 0.25rem; padding-bottom: 0.75rem; }
+  .main-nav { order: 3; flex-basis: 100%; margin-left: 0; }
+  .site-header .btn { order: 4; flex-basis: 100%; }
+  .account-nav { flex-wrap: wrap; }
+}
+
+/* ===== Task 07 (phan 1/4) — Course Structure + Student Learning =====
+   Chi them class moi, dung token san co (ivory champagne / vang gold /
+   Be Vietnam Pro). Body giu >=16px, nut >=44px theo chuan chung. */
+.curriculum { margin-top: 2rem; }
+.curriculum-list { display: grid; gap: 1rem; }
+.curriculum-module summary { cursor: pointer; min-height: 44px; font-size: 1rem; }
+.curriculum-module summary strong { color: var(--gold-dark); }
+.lesson-list { list-style: none; margin: 0.75rem 0 0; padding: 0; display: grid; gap: 0.25rem; }
+.lesson-row { display: flex; align-items: center; justify-content: space-between; gap: 0.75rem; flex-wrap: wrap; padding: 0.5rem 0; border-bottom: 1px solid rgba(168, 132, 28, 0.25); }
+.lesson-row:last-child { border-bottom: 0; }
+.lesson-row a { min-height: 44px; display: inline-flex; align-items: center; font-weight: 600; text-decoration: none; color: var(--ink); }
+.lesson-row a:hover { color: var(--gold-dark); text-decoration: underline; }
+.lesson-row.current { background: var(--bg-champagne); border-radius: 8px; padding-inline: 0.5rem; }
+/* Bai hoc da khoa (chua ghi danh): hang mo, icon o khoa + nhan "Da khoa".
+   Bam vao se cuon toi khoi dang ky #dang-ky-khoa-hoc. */
+.lesson-row.lesson-locked { background: rgba(168, 132, 28, 0.06); border-radius: 8px; padding-inline: 0.5rem; }
+.lesson-row .lesson-locked-link { color: var(--muted, #6b6252); font-weight: 600; }
+.lesson-row .lesson-locked-link:hover { color: var(--gold-dark); }
+.pill-locked { color: #6b6252; border-color: rgba(107, 98, 82, 0.5); }
+/* Khoi dang ky tren trang chi tiet khoa — dich den cua bai hoc da khoa. */
+.enrol-box { margin-top: 1.5rem; scroll-margin-top: 1rem; }
+.lesson-meta { display: inline-flex; align-items: center; gap: 0.5rem; flex-wrap: wrap; }
+.lesson-layout { display: grid; grid-template-columns: minmax(0, 1fr) 340px; gap: 2rem; align-items: start; margin-top: 1rem; }
+.lesson-content { margin-top: 1.5rem; text-align: justify; text-justify: inter-word; hyphens: auto; }
+.video-embed { position: relative; width: 100%; aspect-ratio: 16 / 9; background: #000; border-radius: var(--radius); overflow: hidden; border: 1px solid rgba(168, 132, 28, 0.55); }
+.video-embed iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
+video.video-embed { display: block; }
+.pdf-viewer { width: 100%; height: 70vh; min-height: 480px; border: 1px solid rgba(168, 132, 28, 0.55); border-radius: var(--radius); background: #fff; }
+.audio-player { width: 100%; min-height: 54px; }
+.lesson-image { width: 100%; height: auto; border-radius: var(--radius); border: 1px solid rgba(168, 132, 28, 0.55); }
+.resources { margin-top: 2rem; }
+.resource-list { list-style: none; margin: 0; padding: 0; display: grid; gap: 0.75rem; }
+.resource-row { display: flex; align-items: center; justify-content: space-between; gap: 0.75rem; flex-wrap: wrap; border: 1px solid rgba(168, 132, 28, 0.55); border-radius: var(--radius); padding: 0.75rem 1rem; background: #fff; }
+.lesson-notes { margin-top: 2rem; }
+.note-textarea { width: 100%; font: inherit; font-size: 1rem; line-height: 1.7; padding: 0.75rem 1rem; border: 1px solid rgba(168, 132, 28, 0.6); border-radius: 8px; background: #fff; resize: vertical; }
+.note-textarea:focus { outline: 2px solid var(--gold); outline-offset: 1px; border-color: var(--gold); }
+.lesson-actions { margin-top: 2rem; display: grid; gap: 1.5rem; }
+.lesson-nav { display: flex; justify-content: space-between; gap: 0.75rem; flex-wrap: wrap; }
+.lesson-sidebar { position: sticky; top: 84px; }
+.lesson-sidebar .sidebar-module { border: 1px solid rgba(168, 132, 28, 0.55); border-radius: var(--radius); padding: 0.75rem 1rem; margin-bottom: 0.75rem; background: #fff; }
+.lesson-sidebar .sidebar-module summary { cursor: pointer; min-height: 44px; font-weight: 700; }
+@media (max-width: 900px) {
+  .lesson-layout { grid-template-columns: 1fr; }
+  .lesson-sidebar { position: static; }
+  .pdf-viewer { height: 60vh; min-height: 380px; }
+}
+
+/* ===== Task 07 (2/4) — Learning Progress: LessonPlayer =====
+   Chi dung token co san; body giu >= 16px, nut .btn >= 44px. */
+.lesson-player { margin-top: 1.5rem; }
+.lesson-player h2 { font-size: 1.5rem; }
+.video-wrap { position: relative; width: 100%; aspect-ratio: 16 / 9; margin: 1rem 0; background: #000; border-radius: var(--radius); overflow: hidden; }
+.video-wrap > div { position: absolute; inset: 0; }
+.video-wrap iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 0; }
+.video-wrap > p { color: #fff; text-align: center; padding-top: 20%; }
+
+/* ===== Task 07 (phan 3/4) — SECURITY + ADMIN =====
+   Chi them class moi, dung token san co (ivory champagne / vang gold).
+   Bang responsive: tren dien thoai cuon ngang trong bang thay vi tran trang. */
+.admin-nav { display: flex; gap: 0.5rem; align-items: center; flex-wrap: wrap; margin: 1rem 0 0.5rem; }
+.admin-nav a { font-weight: 700; min-height: 44px; display: inline-flex; align-items: center; }
+.admin-table { width: 100%; border-collapse: collapse; background: #fff; border: 1px solid rgba(168, 132, 28, 0.55); border-radius: var(--radius); overflow: hidden; }
+.admin-table th, .admin-table td { text-align: left; padding: 0.75rem 1rem; border-bottom: 1px solid rgba(168, 132, 28, 0.25); vertical-align: top; }
+.admin-table th { background: var(--bg-champagne); color: var(--gold-dark); }
+.admin-table tr:last-child td { border-bottom: 0; }
+.admin-table p { text-align: left; }
+.btn-small { min-height: 44px; padding: 0.4rem 0.9rem; font-size: 0.95rem; }
+.btn-danger { border-color: #b3261e; background: #fff; color: #b3261e; }
+.btn-danger:hover { background: #fdf0ef; }
+.admin-module { margin-bottom: 1rem; }
+.admin-module h3 { margin-bottom: 0.5rem; }
+.admin-list { list-style: none; margin: 0.5rem 0 0; padding: 0; display: grid; gap: 0.5rem; }
+.admin-lesson { border-top: 1px solid rgba(168, 132, 28, 0.25); padding-top: 0.75rem; }
+.admin-lesson p { margin: 0.35rem 0; }
+.admin-inline-form { border: 1px dashed rgba(168, 132, 28, 0.6); border-radius: var(--radius); padding: 1rem; margin: 0.75rem 0; background: var(--bg-ivory); }
+.admin-move { display: inline-flex; gap: 0.25rem; }
+.field textarea {
+  width: 100%; min-height: 80px; padding: 0.7rem 0.9rem; font: inherit; font-size: 1rem;
+  border: 1px solid rgba(168, 132, 28, 0.6); border-radius: 8px; background: #fff; color: var(--ink);
+}
+.field textarea:focus { outline: 2px solid var(--gold); outline-offset: 1px; border-color: var(--gold); }
+@media (max-width: 700px) {
+  .admin-table { display: block; overflow-x: auto; }
+}
+
+/* ===== Task 08 — ASSIGNMENT: nop bai / cham bai =====
+   Chi them class moi, dung token san co (ivory champagne / vang gold).
+   Body giu >=16px, nut >=44px, input file / textarea full-width tren
+   dien thoai, khong tran ngang. */
+.assignment-form { margin-top: 1.5rem; }
+.assignment-form h2 { font-size: 1.5rem; }
+.file-list { list-style: none; margin: 0.75rem 0 0; padding: 0; display: grid; gap: 0.5rem; }
+.file-list li { overflow-wrap: anywhere; }
+.file-list a { min-height: 44px; display: inline-flex; align-items: center; font-weight: 600; }
+.grade-form { margin-top: 1rem; border-top: 1px solid rgba(168, 132, 28, 0.25); padding-top: 1rem; }
+.grade-form .field input[type="number"] {
+  width: 100%; min-height: 50px; padding: 0.7rem 0.9rem; font: inherit; font-size: 1rem;
+  border: 1px solid rgba(168, 132, 28, 0.6); border-radius: 8px; background: #fff; color: var(--ink);
+}
+.grade-form .field input[type="number"]:focus { outline: 2px solid var(--gold); outline-offset: 1px; border-color: var(--gold); }
+.dashboard-list details { margin-top: 0.75rem; }
+.dashboard-list details summary { cursor: pointer; min-height: 44px; font-weight: 700; color: var(--gold-dark); }
+.dashboard-list details summary:focus-visible { outline: 2px solid var(--gold); outline-offset: 2px; }
+.field input[type="file"] {
+  width: 100%; min-height: 50px; padding: 0.7rem 0.9rem; font: inherit; font-size: 1rem;
+  border: 1px solid rgba(168, 132, 28, 0.6); border-radius: 8px; background: #fff; color: var(--ink);
+}
+
+/* ===== Trang chu — chuyen tu file HTML goc (khong copy 300 !important,
+   khong mang dead code .intl-*). Gia tri thiet ke giu nguyen goc:
+   nen ivory champagne + lattice, gradient vang 135 do, chapter,
+   tieu de section, hover chuan 220ms, touch target >=44px. ===== */
+
+/* --- Khung chung --- */
+.skip-link { position: absolute; left: -9999px; top: 0; background: #fff; color: var(--ink); padding: 0.75rem 1rem; z-index: 100; font-weight: 700; }
+.skip-link:focus { left: 0.5rem; top: 0.5rem; outline: 2px solid var(--gold); }
+/* 2026-11-11 — gon bo cuc: section 64px -> 48px (van thoang, khong dinh
+   nhau); scroll-margin 84px -> 108px cho dung chieu cao header sau khi
+   thu topbar (~103px) — truoc day neo bi che 68px duoi header dinh. */
+main section { padding: 48px 0; scroll-margin-top: 108px; }
+main section.cream { background: var(--cream); }
+h2.title { font-size: clamp(1.6rem, 7.5vw, 2.3rem); line-height: 1.3; font-weight: 800; }
+h3 { font-size: 1.25rem; }
+.chapter {
+  display: inline-flex; align-items: center; gap: 12px;
+  font-size: 0.875rem; font-weight: 800; letter-spacing: 0.2em;
+  text-transform: uppercase; color: #7a5f0c; margin: 0 0 0.75rem;
+}
+.chapter::before, .chapter::after { content: ""; width: 32px; height: 1px; background: linear-gradient(90deg, transparent, #c6a45c); }
+.chapter::after { background: linear-gradient(90deg, #c6a45c, transparent); }
+h1.chapter { font-size: 0.9rem; }
+.kicker { font-size: 1rem; font-weight: 700; color: var(--gold-dark); margin: 0 0 0.5rem; }
+.sec-head { margin-bottom: 2rem; }
+.sec-head .lead { max-width: 860px; }
+.lead { font-size: 1.05rem; line-height: 1.8; }
+.section-cta { margin-top: 2rem; }
+.link-quiet { font-weight: 700; min-height: 44px; display: inline-flex; align-items: center; }
+/* Breadcrumb (Prompt 15) — chi dung o trang chi tiet, token san co. */
+.breadcrumb { margin: 1rem 0 0; }
+.breadcrumb ol { list-style: none; display: flex; flex-wrap: wrap; gap: 0.35rem; margin: 0; padding: 0; }
+.breadcrumb li { display: inline-flex; align-items: center; gap: 0.35rem; font-size: 0.95rem; }
+.breadcrumb li + li::before { content: "›"; color: var(--ink-soft); }
+.breadcrumb [aria-current="page"] { color: var(--ink-soft); font-weight: 600; }
+
+/* --- Header / topbar / progress --- */
+.topbar {
+  background-color: #f8f1d7;
+  background-image:
+    repeating-linear-gradient(45deg, rgba(198, 164, 92, 0.05) 0 1px, transparent 1px 28px),
+    repeating-linear-gradient(-45deg, rgba(198, 164, 92, 0.05) 0 1px, transparent 1px 28px);
+  /* 2026-11-11 — thu nho thanh hotline: truoc day cao 80px vi `.wrap`
+     ben trong bi ke thua `min-height: 68px` tu quy tac `.site-header
+     .wrap` (danh cho khoi header chinh), cong padding/chu. Nay ha
+     `min-height` ve 0, chu 14px (toi thieu doc duoc), padding 0.25rem
+     -> thanh chi con ~33px, gon va thanh thoat. Mobile <=920px van an
+     (xem media query cuoi file). */
+  border-bottom: 1px solid #e3d9b8; font-size: 0.875rem; color: #2b2b2b; padding: 0.25rem 0;
+}
+.topbar .wrap { min-height: 0; }
+.topbar a { color: #2b2b2b; }
+.site-header.scrolled { box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08); }
+.site-header .header-main { min-height: 68px; }
+.brand img { width: 56px; height: 56px; display: block; filter: drop-shadow(0 4px 10px rgba(0, 0, 0, 0.18)); }
+.menu-btn { display: none; min-width: 48px; min-height: 48px; font-size: 1.5rem; background: transparent; border: 1px solid rgba(168, 132, 28, 0.55); border-radius: 8px; }
+.main-nav a { text-transform: uppercase; letter-spacing: 0.04em; }
+.main-nav a.active { color: var(--gold-dark); border-bottom: 2px solid var(--gold); }
+
+/* ===== Header 1 dong o desktop rong (11/11/2026, sua 11/11/2026) =====
+   Anh chup desktop cu: KET NOI rot xuong dong 2, "Xin chao, Visfar
+   Academy", "Dang xuat", "Nhan lo trinh phu hop" deu ngat 2 dong. Sua
+   11/11/2026: CTA de len KET NOI ca o 1280/1440/1920px khi da dang nhap
+   ten dai — 1 dong chi khoa o >=1301px; 901-1300px dung 2 dong (xem khoi
+   ben duoi). Giu nguyen noi dung, chi khoa nowrap + thu hep khoang cach/
+   co chu. Mobile (<=900px) giu nguyen menu mobile hien tai. */
+/* Chi o desktop rong (>=1301px) moi khoa 1 dong: o mobile (<=900px) phai de
+   wrap theo quy tac Task 06, neu khong header tran ngang va link
+   Dashboard bi day ra ngoai man hinh, khong bam duoc. O desktop hep
+   (901-1300px) dung 2 dong (xem khoi ben duoi) — 1 dong khong du cho cho
+   ca 6 link menu + CTA + tim kiem + gio + tai khoan ten dai. */
+@media (min-width: 1301px) {
+  .site-header .header-main { flex-wrap: nowrap; gap: 0.75rem; }
+  .main-nav { flex-wrap: nowrap; flex-shrink: 1; min-width: 0; }
+}
+.main-nav a { white-space: nowrap; padding: 0.6rem 0.5rem; font-size: 0.85rem; }
+@media (min-width: 901px) {
+  .account-nav { flex-wrap: nowrap; flex-shrink: 0; gap: 0.5rem; }
+  .account-nav a, .account-nav .btn { white-space: nowrap; }
+}
+.site-header .btn-gold { white-space: nowrap; flex-shrink: 0; padding: 0.7rem 1rem; }
+.site-header .account-nav .btn { padding: 0.7rem 0.9rem; }
+/* Cum ben phai header theo anh mau (11/11/2026): o tim kiem bo tron vien
+   manh + icon gio hang + icon tai khoan hinh tron. Toi gian, vien vang
+   manh, nen ivory — dong bo Visfar, khong nut to mau me. */
+.header-search {
+  display: inline-flex; align-items: center; gap: 0.5rem;
+  width: 200px; min-height: 44px; padding: 0 0.9rem;
+  background: #fffdf6; border: 1px solid rgba(168, 132, 28, 0.55);
+  border-radius: 999px; color: var(--gold-dark);
+}
+.header-search:focus-within { border-color: var(--gold); box-shadow: 0 0 0 3px rgba(212, 175, 55, 0.2); outline: none; }
+.header-search svg { flex-shrink: 0; }
+.header-search input {
+  border: 0; outline: none; background: transparent; min-width: 0;
+  font-size: 0.9rem; color: var(--ink); padding: 0;
+}
+.header-search input::placeholder { color: rgba(43, 43, 43, 0.55); }
+.header-icon-btn {
+  display: inline-flex; align-items: center; justify-content: center;
+  width: 44px; height: 44px; flex-shrink: 0; border-radius: 50%;
+  background: transparent; border: 1px solid rgba(168, 132, 28, 0.55);
+  color: var(--ink); text-decoration: none; cursor: pointer;
+  transition: border-color 220ms ease, background 220ms ease, transform 220ms ease;
+}
+@media (hover: hover) {
+  .header-icon-btn:hover { border-color: var(--gold); background: rgba(212, 175, 55, 0.12); color: var(--gold-dark); transform: translateY(-2px); }
+}
+.account-menu { position: relative; display: inline-flex; flex-shrink: 0; }
+/* Nút kích hoạt menu tài khoản đã đăng nhập: avatar tròn đỏ chữ cái đầu
+   họ tên + tên + mũi tên lên/xuống — theo ảnh mẫu user gửi. */
+.account-trigger {
+  display: inline-flex; align-items: center; gap: 0.5rem;
+  min-height: 44px; padding: 0 0.25rem; background: transparent; border: 0;
+  cursor: pointer; color: var(--ink); white-space: nowrap;
+}
+.account-avatar {
+  display: inline-flex; align-items: center; justify-content: center;
+  width: 40px; height: 40px; flex-shrink: 0; border-radius: 50%;
+  background: #a31d1e; color: #fff; font-weight: 800; font-size: 0.95rem;
+  letter-spacing: 0.02em; box-shadow: 0 4px 12px rgba(163, 29, 30, 0.35);
+}
+.account-trigger-name { font-weight: 700; font-size: 0.95rem; max-width: 170px; overflow: hidden; text-overflow: ellipsis; }
+.account-dropdown {
+  position: absolute; top: calc(100% + 10px); right: 0; z-index: 20;
+  display: flex; flex-direction: column; min-width: 260px;
+  background: #fffdf6; border: 1px solid rgba(168, 132, 28, 0.55);
+  border-radius: 12px; box-shadow: 0 18px 40px rgba(0, 0, 0, 0.16);
+  padding: 0.5rem; text-align: left;
+}
+.account-dropdown-head {
+  display: flex; flex-direction: row; align-items: center; gap: 0.75rem;
+  padding: 0.6rem 0.8rem 0.75rem; border-bottom: 1px solid rgba(168, 132, 28, 0.25);
+  margin-bottom: 0.25rem;
+}
+.account-dropdown-avatar {
+  display: inline-flex; align-items: center; justify-content: center;
+  width: 40px; height: 40px; flex-shrink: 0; border-radius: 50%;
+  background: #a31d1e; color: #fff; font-weight: 800; font-size: 0.95rem;
+}
+.account-dropdown-id { display: flex; flex-direction: column; gap: 0.15rem; min-width: 0; }
+.account-dropdown-name { font-weight: 800; font-size: 1rem; color: var(--ink); }
+.account-dropdown-email { font-size: 0.85rem; color: rgba(43, 43, 43, 0.6); overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.account-dropdown a, .account-dropdown button.account-signout {
+  display: flex; align-items: center; gap: 0.7rem; min-height: 44px; padding: 0.6rem 0.8rem;
+  border-radius: 8px; font-weight: 600; font-size: 0.95rem; color: var(--ink);
+  text-decoration: none; background: transparent; border: 0; width: 100%;
+  text-align: left; cursor: pointer; white-space: nowrap;
+}
+.account-dropdown a svg, .account-dropdown button.account-signout svg { flex-shrink: 0; color: rgba(43, 43, 43, 0.7); }
+.account-dropdown a:hover, .account-dropdown button.account-signout:hover { background: rgba(212, 175, 55, 0.12); color: var(--gold-dark); }
+.account-dropdown a.active { color: #a31d1e; background: rgba(163, 29, 30, 0.07); font-weight: 800; }
+.account-dropdown a.active svg { color: #a31d1e; }
+/* ===== Header: vua 1 dong o desktop rong, 2 dong o desktop hep (11/11/2026) =====
+   Anh chup user: nut CTA "Nhan lo trinh phu hop" de len link KET NOI o
+   1024px (chua dang nhap) va ca o 1280/1440/1920px (da dang nhap ten dai).
+   Nguyen nhan goc: .main-nav co flex-shrink:1 + min-width:0 nen bi nen nho
+   hon tong be rong cac link nowrap -> link cuoi tran khoi hop nav va chui
+   duoi nut CTA (ve sau trong DOM nen ve de len). Header-main khong tran
+   ngang nen loi chi thay bang mat thuong, khong thay bang scrollWidth.
+   Giu nguyen noi dung/thu tu, chi sua CSS:
+   - >=901px: thu hep co chu/padding/search/ten tai khoan de 1 dong vua
+     khung 1380px ca khi da dang nhap ten dai (khung gioi han 1380px nen
+     quy tac nay ap cho moi co lon hon, ke ca 1920px).
+   - 901-1300px: 2 dong — hang 1: logo + CTA + tim kiem + gio + tai khoan;
+     hang 2: menu 6 muc full-width. Khong che/cut chu, khong an tinh nang. */
+@media (min-width: 901px) {
+  .account-trigger-name { max-width: 110px; font-size: 0.9rem; }
+  .header-search { width: 140px; }
+  .site-header .btn-gold { padding: 0.7rem 0.85rem; font-size: 0.95rem; }
+  .site-header .header-main { gap: 0.5rem; }
+}
+@media (min-width: 901px) and (max-width: 1300px) {
+  .site-header .header-main { flex-wrap: wrap; row-gap: 0.25rem; padding-bottom: 0.5rem; }
+  .main-nav { order: 3; flex-basis: 100%; margin-left: 0; }
+}
+.progress-bar { height: 3px; background: transparent; }
+.progress-bar span { display: block; height: 100%; background: var(--grad); transition: width 120ms linear; }
+
+/* --- Journey nav --- */
+.journey-nav { background: rgba(255, 255, 255, 0.6); border-bottom: 1px solid #e3d9b8; padding: 14px 0; }
+.journey-nav .wrap { display: flex; flex-wrap: wrap; gap: 0.5rem 1.25rem; align-items: center; }
+.journey-nav .label { font-weight: 800; text-transform: uppercase; letter-spacing: 0.08em; color: var(--gold-dark); }
+.journey-nav a { min-height: 44px; display: inline-flex; align-items: center; font-weight: 600; text-decoration: none; }
+
+/* --- Hero --- */
+.hero { text-align: center; padding: 64px 0 56px; }
+.hero-group-photo { margin: 0 0 1rem; }
+.hero-group-photo img { width: 100%; height: auto; border: 1px solid #c6a45c; border-radius: var(--radius); box-shadow: 0 18px 40px rgba(122, 95, 12, 0.15); }
+.hero-manifesto { margin-top: 2.2rem; text-align: center; }
+.hero-manifesto h2 { margin: 1.6rem auto 0; font-weight: 900; line-height: 1.5; }
+.manifesto-line1a, .manifesto-line1b {
+  display: block; white-space: nowrap; font-weight: 900; letter-spacing: 0.01em; line-height: 1.55;
+  font-size: clamp(12.5px, 3.5vw, 19px);
+  background: linear-gradient(135deg, #6e4f0a 0%, #a67c00 38%, #c9a227 62%, #d4af37 80%, #e8c766 90%, #8c6d1f 100%);
+  -webkit-background-clip: text; background-clip: text; color: transparent;
+  text-shadow: 0 1px 2px rgba(122, 95, 12, 0.18);
+}
+.manifesto-line1b { margin-top: 0.35em; }
+.manifesto-dot { color: #7a5f0c; -webkit-text-fill-color: #7a5f0c; margin: 0 0.18em; }
+.manifesto-line2 {
+  display: block; white-space: nowrap; margin-top: 0.55em;
+  font-size: clamp(24px, 7vw, 26px); font-weight: 900; letter-spacing: 0.02em; line-height: 1.4;
+  background: linear-gradient(135deg, #6e4f0a 0%, #a67c00 38%, #c9a227 62%, #d4af37 80%, #e8c766 90%, #8c6d1f 100%);
+  -webkit-background-clip: text; background-clip: text; color: transparent;
+  text-shadow: 0 1px 2px rgba(122, 95, 12, 0.18);
+}
+.hero-manifesto > p.lead { max-width: 100%; margin: 2rem auto 0; font-size: 1.08rem; font-style: italic; line-height: 1.85; text-align: justify; text-align-last: left; text-justify: inter-word; hyphens: auto; }
+.hero-manifesto > p:not(.lead) { max-width: 100%; margin: 1rem auto 0; text-align: justify; text-align-last: left; }
+.hero-cta { margin-top: 2rem; display: flex; gap: 1rem; justify-content: center; align-items: center; flex-wrap: wrap; }
+
+/* --- Reveal --- */
+.reveal { opacity: 0; transform: translateY(14px); transition: opacity 480ms ease, transform 480ms ease; }
+.reveal.in { opacity: 1; transform: none; }
+@media (prefers-reduced-motion: reduce) {
+  .reveal { opacity: 1; transform: none; transition: none; }
+  * { scroll-behavior: auto; }
+  /* Tat hieu ung nang khung cho nguoi dung giam chuyen dong. */
+  .card, .field-card, .mv-card, .voice-card, .blog-grid article, .event-card, .update-card, .prog-card, .biz article, .lamp, .prog-help, .equation, #lo-trinh .step, .btn { transition: none; }
+}
+
+/* --- Su menh & Tam nhin --- */
+.mv-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; }
+.mv-card {
+  background: #fff; border: 1px solid #c6a45c; border-radius: var(--radius);
+  padding: 28px 26px; box-shadow: 0 10px 26px rgba(122, 95, 12, 0.1);
+  outline: 1px solid rgba(198, 164, 92, 0.45); outline-offset: 4px;
+  transition: transform 220ms ease, box-shadow 220ms ease, border-color 220ms ease;
+}
+.mv-card h3 { font-size: 2rem; }
+.mv-foot { margin-top: 1.5rem; }
+
+/* --- Founder --- */
+.founder-grid { display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 7fr); gap: 2rem; align-items: start; }
+.founder-grid figure { margin: 0; }
+.founder-grid img { width: 100%; height: auto; border-radius: var(--radius); border: 1px solid rgba(168, 132, 28, 0.55); }
+.founder-name { font-size: clamp(1.7rem, 4vw, 2.4rem); font-weight: 900; letter-spacing: 0.06em; margin: 0.25rem 0; }
+.founder-role { font-weight: 700; color: var(--gold-dark); }
+.founder-rest { margin-top: 1.5rem; }
+.founder-rest > p:last-child { margin-bottom: 0; }
+
+/* --- Triet ly --- */
+.phil-block { margin-top: 2.5rem; }
+.phil-block h3 { font-size: 1.5rem; text-transform: uppercase; }
+.phil-num { color: var(--gold-dark); }
+.phil-key { font-weight: 800; color: var(--gold-dark); }
+.equation { margin-top: 28px; border: 1px solid #c9bfa4; background: #fff; padding: 38px 36px; text-align: center; border-radius: var(--radius); transition: transform 220ms ease, box-shadow 220ms ease, border-color 220ms ease; }
+.equation .eq { display: flex; flex-wrap: nowrap; gap: 18px; align-items: center; justify-content: center; font-size: clamp(30px, 3vw, 42px); line-height: 1.35; margin: 0; }
+.equation .eq .box { padding: 20px 30px; border: 2px solid #a8841c; border-radius: var(--radius); font-weight: 900; background: linear-gradient(135deg, #6e4f0a 0%, #a67c00 38%, #c9a227 62%, #d4af37 80%, #e8c766 90%, #8c6d1f 100%); -webkit-background-clip: text; background-clip: text; color: transparent; }
+.equation .eq .op { font-weight: 900; color: var(--gold-dark); }
+.equation-note { margin-top: 1.25rem; }
+.phil-list { padding-left: 1.25rem; display: grid; gap: 0.5rem; }
+.phil-list li { line-height: 1.7; }
+.house-figure { margin: 2rem 0 0; text-align: center; }
+.house-figure img { width: 100%; height: auto; }
+.house-caption { margin-top: 20px; text-align: center; font-size: clamp(1.7rem, 8.5vw, 2.6rem); font-weight: 900; letter-spacing: 0.06em; line-height: 1.2; }
+.house-legend { display: none; margin-top: 16px; padding: 14px 4px; border-top: 1px solid rgba(168, 132, 28, 0.45); border-bottom: 1px solid rgba(168, 132, 28, 0.45); font-size: 1rem; line-height: 1.75; color: #2e2a1e; text-align: justify; }
+.house-legend b { color: #6e530a; }
+.lamps { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.25rem; margin-top: 2rem; }
+.lamp { background: #fff; border: 1px solid #c9bfa4; border-radius: var(--radius); padding: 22px 18px; transition: transform 220ms ease, box-shadow 220ms ease, border-color 220ms ease; }
+.lamp-num { font-size: 1.15rem; font-weight: 900; margin: 0 0 0.5rem; }
+
+/* --- Tam giac hien thuc --- */
+.triangle-diagram { margin: 40px 0 0; text-align: center; }
+.triangle-sub { font-weight: 700; color: var(--gold-dark); }
+.triangle-interactive { width: 100%; max-width: 100%; }
+.triangle-svg { width: 100%; height: auto; display: block; margin: 0 auto; overflow: visible; }
+.triangle-svg .tri-ring { cursor: pointer; outline: none; transform-box: view-box; transform-origin: 50% 66.1%; transition: opacity 220ms ease, filter 220ms ease; }
+.triangle-svg .tri-ring .band { stroke: #d4af37; stroke-width: 0; stroke-linejoin: round; transition: stroke-width 220ms ease; }
+.triangle-svg .tri-ring .y-divider { fill: none; stroke: #6e5a6e; stroke-width: 2.8; stroke-linecap: round; stroke-linejoin: round; pointer-events: none; }
+.triangle-svg .tri-ring text { font-family: var(--font-body); font-weight: 700; font-size: 11.5px; text-anchor: middle; dominant-baseline: central; pointer-events: none; stroke: none; }
+.triangle-svg .tri-ring text.lbl-navy { fill: #0a1230; }
+.triangle-svg .tri-ring text.lbl-gold { fill: #fff6cc; }
+.triangle-svg.has-active .tri-ring { opacity: 0.34; filter: brightness(0.6) saturate(0.5); }
+.triangle-svg.has-active .tri-ring.is-active { opacity: 1; filter: brightness(1.16) saturate(1.3) drop-shadow(0 12px 16px rgba(0, 0, 0, 0.35)) drop-shadow(0 0 8px rgba(212, 175, 55, 0.65)); }
+.triangle-svg.has-active .tri-ring.is-active .band { stroke-width: 3.2px; }
+.triangle-svg:not(.has-active):hover .tri-ring:not(:hover) { opacity: 0.34; filter: brightness(0.6) saturate(0.5); }
+.triangle-svg:not(.has-active):hover .tri-ring:hover { filter: brightness(1.16) saturate(1.3) drop-shadow(0 12px 16px rgba(0, 0, 0, 0.35)) drop-shadow(0 0 8px rgba(212, 175, 55, 0.65)); }
+.triangle-svg:not(.has-active):hover .tri-ring:hover .band { stroke-width: 3.2px; }
+.triangle-caption { margin-top: 14px; text-align: center; font-weight: 900; font-size: clamp(16px, 7vw, 3.6rem); letter-spacing: 0.06em; line-height: 1.2; text-transform: uppercase; white-space: nowrap; }
+
+/* --- Lo trinh --- */
+#lo-trinh { padding: 0; }
+#lo-trinh .steps { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 0; margin-top: 2rem; background: #fff; border: 1px solid #e2d9c2; border-radius: var(--radius); overflow: hidden; }
+#lo-trinh .step { padding: 28px 22px; border-left: 1px solid #e2d9c2; border-top: 1px solid #e2d9c2; transition: transform 220ms ease, box-shadow 220ms ease, background 220ms ease; }
+#lo-trinh .step:nth-child(3n + 1) { border-left: none; }
+#lo-trinh .step:nth-child(-n + 3) { border-top: none; }
+#lo-trinh .step h3 .n { display: block; font-size: 2rem; font-weight: 900; }
+#lo-trinh .step h3 .step-name { display: block; margin-top: 0.35rem; }
+#lo-trinh .step h3 .step-sub { display: block; margin-top: 0.15rem; font-size: 1rem; font-weight: 600; color: var(--ink-soft); }
+.phil-manifesto { max-width: none; margin-top: 46px; padding-top: 34px; border-top: 1px solid #e3d9b8; text-align: center; }
+.phil-decl { margin-top: 1.1rem; font-weight: 900; line-height: 1.6; text-align: center; }
+.phil-decl-line1a, .phil-decl-line1b {
+  display: block; white-space: nowrap; font-weight: 900; letter-spacing: 0.01em; line-height: 1.55;
+  font-size: clamp(12.5px, 3.5vw, 19px);
+  background: linear-gradient(135deg, #6e4f0a 0%, #a67c00 38%, #c9a227 62%, #d4af37 80%, #e8c766 90%, #8c6d1f 100%);
+  -webkit-background-clip: text; background-clip: text; color: transparent;
+  text-shadow: 0 1px 2px rgba(122, 95, 12, 0.18);
+}
+.phil-decl-line1b { margin-top: 0.35em; }
+.phil-decl-line2 {
+  display: block; margin-top: 0.45rem; font-size: clamp(24px, 6.4vw, 30px); font-weight: 900; letter-spacing: 0.015em; line-height: 1.4;
+  background: linear-gradient(135deg, #6e4f0a 0%, #a67c00 38%, #c9a227 62%, #d4af37 80%, #e8c766 90%, #8c6d1f 100%);
+  -webkit-background-clip: text; background-clip: text; color: transparent;
+  text-shadow: 0 1px 2px rgba(122, 95, 12, 0.18);
+}
+
+/* --- Linh vuc --- */
+.fields { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
+.field-card { background: #fff; border: 1px solid #c9bfa4; border-radius: var(--radius); padding: 28px 26px; transition: transform 220ms ease, box-shadow 220ms ease, border-color 220ms ease; }
+.field-card h3 { font-size: 1.15rem; }
+.field-num { font-weight: 800; color: var(--gold-dark); letter-spacing: 0.04em; margin: 0 0 0.5rem; }
+.hint-line { font-weight: 700; color: var(--gold-dark); }
+@media (hover: hover) {
+  .field-card:hover, .mv-card:hover, .voice-card:hover, .blog-grid article:hover, .event-card:hover, .update-card:hover, .prog-card:hover, .biz article:hover, .lamp:hover, .prog-help:hover, .equation:hover { transform: translateY(-3px); border-color: rgba(212, 175, 55, 0.6); box-shadow: var(--shadow); }
+  /* Buoc lo trinh la o trong luoi co vien chung: chi nang nhe 2px + nen
+     champagne de khong vo khung luoi. */
+  #lo-trinh .step:hover { transform: translateY(-2px); background: #fffdf6; box-shadow: 0 12px 26px rgba(122, 95, 12, 0.18); position: relative; z-index: 1; }
+}
+
+/* --- Chuong trinh --- */
+.course-count { font-weight: 700; margin: 1rem 0; }
+.tabs { margin-top: 1rem; }
+.tab:hover { border-color: rgba(212, 175, 55, 0.6); }
+.prog-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; margin-top: 1.5rem; }
+.prog-card { background: #fff; border: 1px solid #c6a45c; border-radius: var(--radius); overflow: hidden; box-shadow: 0 10px 26px rgba(122, 95, 12, 0.1); display: flex; flex-direction: column; transition: transform 220ms ease, box-shadow 220ms ease, border-color 220ms ease; }
+.prog-card.featured { grid-column: 1 / -1; }
+.prog-card.featured .poster { aspect-ratio: 21 / 9; }
+.poster { position: relative; aspect-ratio: 16 / 9; overflow: hidden; }
+/* Anh poster goc la nen do man sam dac (#560f15): tang sang bang filter
+   (khong ve lai anh) + giam do toi cua lop phu den, giu chu trang/vang
+   van doc ro nho text-shadow. Ket qua: do man tuoi sang hon ro ret. */
+.poster img { width: 100%; height: 100%; object-fit: cover; display: block; filter: brightness(1.38) saturate(1.3); }
+.poster-overlay { position: absolute; inset: 0; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 0.4rem; padding: 1rem 1.25rem; background: linear-gradient(180deg, rgba(0, 0, 0, 0.12), rgba(0, 0, 0, 0.28) 55%, rgba(0, 0, 0, 0.48)); color: #fff; text-align: center; }
+.poster-overlay p { margin: 0; text-align: center; }
+.poster-kicker { font-size: 0.95rem; font-weight: 800; letter-spacing: 0.28em; color: #f4dd8f; text-shadow: 0 2px 8px rgba(0, 0, 0, 0.65); }
+.poster-title { font-size: 1.6rem; font-weight: 900; line-height: 1.25; text-shadow: 0 2px 10px rgba(0, 0, 0, 0.65); }
+.poster-sub { font-size: 0.95rem; color: #f4e9c4; text-shadow: 0 1px 6px rgba(0, 0, 0, 0.6); }
+.prog-card.featured .poster-kicker { font-size: 1.05rem; }
+.prog-card.featured .poster-title { font-size: 2.1rem; }
+.prog-card.featured .poster-sub { font-size: 1.05rem; }
+@media (max-width: 700px) {
+  .poster-kicker { font-size: 0.85rem; }
+  .poster-title { font-size: 1.3rem; }
+  .poster-sub { font-size: 0.85rem; }
+  .prog-card.featured .poster-kicker { font-size: 0.9rem; }
+  .prog-card.featured .poster-title { font-size: 1.5rem; }
+  .prog-card.featured .poster-sub { font-size: 0.9rem; }
+}
+.prog-body { padding: 1.25rem; display: flex; flex-direction: column; flex: 1; }
+.prog-body h3 { font-size: 1.25rem; margin: 0 0 0.5rem; }
+.prog-subtitle { color: var(--ink); }
+.prog-details { margin-top: 0.5rem; border-top: 1px solid #e3d9b8; padding-top: 1rem; }
+.prog-details h4 { margin: 0 0 0.5rem; }
+.prog-details ul { padding-left: 1.25rem; display: grid; gap: 0.35rem; }
+.prog-details li { line-height: 1.7; }
+/* 2026-11-11 — nut the khoa hoc can giua: xep doc (vang tren, vien
+   duoi), can giua theo chieu ngang, khoang cach 2 nut can doi. Truoc
+   day flex-row lech trai. */
+.prog-actions { margin-top: auto; padding-top: 1rem; display: flex; flex-direction: column; gap: 0.75rem; align-items: center; justify-content: center; text-align: center; }
+/* Nut duy nhat trong the khoa hoc o /chuong-trinh: can giua nhu the trang chu. */
+.card-actions { text-align: center; }
+.prog-help { margin-top: 2.5rem; text-align: center; background: #fff; border: 1px solid #c6a45c; border-radius: var(--radius); padding: 2rem 1.5rem; transition: transform 220ms ease, box-shadow 220ms ease, border-color 220ms ease; }
+.prog-help h3 { font-size: 1.5rem; }
+.no-result { margin-top: 1.5rem; }
+
+/* --- Doanh nghiep --- */
+.biz-figure { margin: 0 0 2rem; }
+.biz-figure img { width: 100%; height: auto; border-radius: var(--radius); border: 1px solid #c6a45c; box-shadow: 0 18px 40px rgba(122, 95, 12, 0.15); }
+.biz { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
+.biz article { background: #fff; border: 1px solid #c6a45c; border-radius: var(--radius); padding: 28px 26px; box-shadow: 0 10px 26px rgba(122, 95, 12, 0.1); transition: transform 220ms ease, box-shadow 220ms ease, border-color 220ms ease; }
+.biz .who { font-weight: 700; color: var(--gold-dark); }
+
+/* --- Testimonial --- */
+.testimonial-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.5rem; }
+.voice-card { background: #fff; border: 1px solid #c6a45c; border-radius: var(--radius); padding: 28px 26px; box-shadow: 0 10px 26px rgba(122, 95, 12, 0.1); transition: transform 220ms ease, box-shadow 220ms ease, border-color 220ms ease; }
+.voice-head { display: flex; gap: 1rem; align-items: center; margin: 0 0 1rem; }
+.voice-head img { width: 84px; height: 84px; border-radius: 50%; object-fit: cover; border: 2px solid var(--gold); flex: none; }
+.voice-name { font-weight: 800; margin: 0; }
+.voice-role { color: var(--ink-soft); margin: 0.15rem 0 0; font-size: 0.95rem; }
+.voice-card blockquote { margin: 0; }
+.voice-card blockquote p { margin: 0; }
+
+/* --- Blog / su kien --- */
+.blog-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; }
+.blog-grid article { background: #fff; border: 1px solid #c6a45c; border-radius: var(--radius); padding: 28px 26px; box-shadow: 0 10px 26px rgba(122, 95, 12, 0.1); transition: transform 220ms ease, box-shadow 220ms ease, border-color 220ms ease; }
+.blog-pillar { font-weight: 800; color: var(--gold-dark); margin: 0 0 0.5rem; }
+.blog-grid .meta { color: var(--ink-soft); font-size: 0.95rem; }
+.resource-list { list-style: none; margin: 2rem 0 0; padding: 0; display: grid; gap: 0.75rem; }
+.resource-list a { display: flex; gap: 0.75rem; flex-wrap: wrap; align-items: baseline; border: 1px solid #c6a45c; border-radius: var(--radius); padding: 0.75rem 1rem; background: #fff; text-decoration: none; min-height: 44px; }
+#su-kien { margin-top: 3rem; }
+.event-cards { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1.5rem; margin-top: 1.5rem; }
+.event-card { background: #fff; border: 1px solid #c6a45c; border-radius: var(--radius); overflow: hidden; box-shadow: 0 10px 26px rgba(122, 95, 12, 0.1); padding: 0 0 1.25rem; transition: transform 220ms ease, box-shadow 220ms ease, border-color 220ms ease; }
+.event-card img { width: 100%; height: auto; display: block; aspect-ratio: 16 / 10; object-fit: cover; }
+.event-card > *:not(img) { margin-inline: 1.25rem; }
+.event-card > p:first-of-type { margin-top: 1rem; }
+.ev-tag { display: inline-block; font-size: 0.85rem; font-weight: 800; color: var(--gold-dark); background: var(--bg-champagne); border: 1px solid var(--gold); border-radius: 999px; padding: 0.15rem 0.7rem; }
+.ev-title { font-size: 1.15rem; }
+.ev-date { font-weight: 700; }
+.ev-meta { color: var(--ink-soft); }
+.event-more { padding: 1.5rem 1.25rem; display: flex; flex-direction: column; justify-content: center; }
+.event-more > * { margin-inline: 0; }
+
+/* --- FAQ --- */
+.faq { display: grid; gap: 14px; }
+.faq details { background: #fff; border: 1px solid #c6a45c; border-radius: var(--radius); padding: 1rem 1.25rem; }
+.faq summary { cursor: pointer; min-height: 44px; font-weight: 700; font-size: 1rem; display: flex; align-items: center; }
+.faq summary:focus-visible { outline: 2px solid var(--gold); outline-offset: 2px; }
+.faq .ans p { margin: 0.75rem 0 0; }
+
+/* --- Dang cap nhat --- */
+.update-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1.5rem; }
+.update-card { background: #fff; border: 1px solid #c6a45c; border-radius: var(--radius); padding: 28px 26px; box-shadow: 0 10px 26px rgba(122, 95, 12, 0.1); transition: transform 220ms ease, box-shadow 220ms ease, border-color 220ms ease; }
+
+/* --- Form tu van --- */
+.form-grid { display: grid; grid-template-columns: minmax(0, 5fr) minmax(0, 6fr); gap: 2.5rem; align-items: start; }
+.contact-lines a { min-height: 44px; display: inline-flex; align-items: center; }
+.consult-form { max-width: none; }
+.zalo-actions { display: flex; gap: 0.75rem; flex-wrap: wrap; margin-top: 1rem; }
+.zalo-note { font-size: 0.95rem; color: var(--ink-soft); }
+
+/* --- Policy --- */
+.policy-article { max-width: 860px; margin: 0 auto; padding: 3rem 0; }
+.policy-article h1 { font-size: clamp(1.75rem, 4vw, 2.8rem); }
+.policy-meta { color: var(--ink-soft); }
+.policy-body h2 { font-size: 1.35rem; margin-top: 2rem; }
+.policy-body h3 { font-size: 1.15rem; }
+.policy-contact { margin-top: 2.5rem; border: 1px solid #c6a45c; border-radius: var(--radius); background: #fff; padding: 1.25rem 1.5rem; }
+.policy-nav { display: flex; gap: 1rem; flex-wrap: wrap; margin-top: 2rem; }
+.policy-nav a { font-weight: 700; min-height: 44px; display: inline-flex; align-items: center; }
+
+/* --- Footer --- */
+.site-footer { border-top: 1px solid #c6a45c; margin-top: 0; padding: 44px 0 2rem; background-color: #f8f1d7; background-image: repeating-linear-gradient(45deg, rgba(198, 164, 92, 0.05) 0 1px, transparent 1px 28px), repeating-linear-gradient(-45deg, rgba(198, 164, 92, 0.05) 0 1px, transparent 1px 28px), linear-gradient(180deg, #fbf7e9 0%, #f8f1d7 100%); position: relative; }
+.site-footer::before { content: ""; position: absolute; top: 0; left: 0; right: 0; height: 3px; background: var(--grad); box-shadow: 0 0 12px rgba(198, 164, 92, 0.3); }
+.foot-grid { display: grid; grid-template-columns: 1.55fr 0.92fr 1.12fr 0.98fr 1.18fr; gap: 44px 34px; }
+.foot-grid h4 { font-size: 1rem; margin: 0 0 0.75rem; }
+.foot-grid ul { list-style: none; margin: 0; padding: 0; display: grid; gap: 0.35rem; }
+.foot-grid a { min-height: 44px; display: inline-flex; align-items: center; text-decoration: none; }
+.foot-brand img { width: 168px; height: 168px; }
+.foot-slogan { font-weight: 700; color: var(--gold-dark); }
+.foot-intro { margin-top: 2.5rem; border-top: 1px solid rgba(168, 132, 28, 0.45); padding-top: 1.5rem; }
+.foot-news { margin-top: 2rem; border-top: 1px solid rgba(168, 132, 28, 0.45); padding-top: 1.5rem; }
+.foot-bottom { display: flex; justify-content: space-between; align-items: center; gap: 1rem; margin-top: 2rem; border-top: 1px solid rgba(168, 132, 28, 0.45); padding-top: 1.25rem; }
+.foot-bottom p { margin: 0; }
+.to-top { min-width: 44px; min-height: 44px; display: inline-flex; align-items: center; justify-content: center; border: 1px solid var(--gold); border-radius: 8px; text-decoration: none; font-weight: 900; }
+
+/* --- Nut noi --- */
+/* Cum 3 nut noi goc phai duoi (trang chu): Zalo tren cung, CTA "Nhan lo
+   trinh phu hop" ngay duoi Zalo, nut ve dau trang duoi cung. Ca 3 hien/
+   an cung nhau theo logic FloatingButtons: cuon >240px va form #tu-van
+   khong nam trong viewport. Nut Zalo mau vang gold theo anh mau user gui:
+   nen gold, chu den, icon tron den chu Z trang. */
+.float-zalo, .float-cta, .float-top {
+  position: fixed; z-index: 40; min-width: 48px; min-height: 48px;
+  display: inline-flex; align-items: center; justify-content: center;
+  border-radius: 999px; text-decoration: none; font-weight: 800;
+  box-shadow: 0 10px 26px rgba(0, 0, 0, 0.25);
+}
+.float-zalo { right: 16px; bottom: 140px; background: var(--grad); background-size: 190% 100%; color: #171204; border: 2px solid transparent; padding: 0 0.9rem; font-size: 0.95rem; gap: 0.4rem; white-space: nowrap; }
+.float-zalo-z { display: inline-flex; align-items: center; justify-content: center; width: 26px; height: 26px; border-radius: 50%; background: #171204; color: #fff; font-weight: 900; }
+.float-cta { right: 16px; bottom: 76px; background: var(--grad); background-size: 190% 100%; color: #171204; border: 2px solid transparent; padding: 0 1.1rem; font-size: 0.95rem; white-space: nowrap; }
+.float-top { right: 16px; bottom: 16px; background: var(--grad); color: #171204; border: 2px solid transparent; font-size: 1.25rem; }
+@media (hover: hover) {
+  .float-zalo:hover, .float-cta:hover { background-position: 100% 50%; transform: translateY(-2px); }
+}
+@media (max-width: 480px) {
+  .float-zalo, .float-cta { font-size: 0.85rem; padding: 0 0.8rem; }
+}
+
+/* --- Responsive trang chu --- */
+@media (max-width: 1100px) {
+  .house-legend { display: block; }
+  .lamps { grid-template-columns: repeat(2, 1fr); }
+  .foot-grid { grid-template-columns: 1fr 1fr; gap: 40px 32px; }
+}
+@media (max-width: 1020px) {
+  .prog-grid { grid-template-columns: repeat(2, 1fr); }
+  .fields { grid-template-columns: repeat(2, 1fr); }
+  .biz { grid-template-columns: 1fr; }
+  .event-cards { grid-template-columns: repeat(2, 1fr); }
+  #lo-trinh .steps { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  #lo-trinh .step:nth-child(3n + 1) { border-left: 1px solid #e2d9c2; }
+  #lo-trinh .step:nth-child(odd) { border-left: none; }
+  #lo-trinh .step:nth-child(-n + 3) { border-top: 1px solid #e2d9c2; }
+  #lo-trinh .step:nth-child(-n + 2) { border-top: none; }
+}
+@media (max-width: 920px) {
+  .topbar { display: none; }
+  .menu-btn { display: inline-flex; }
+  .site-header .header-main { flex-wrap: wrap; row-gap: 0.25rem; padding-bottom: 0.75rem; }
+  .main-nav { display: none; order: 3; flex-basis: 100%; margin-left: 0; flex-direction: column; align-items: stretch; }
+  .main-nav.open { display: flex; }
+  .main-nav a { border-bottom: 1px solid rgba(168, 132, 28, 0.25); padding: 12px 4px; }
+  .site-header .btn-gold { order: 4; flex-basis: 100%; }
+  .header-search { display: none; }
+  .account-nav { margin-left: auto; }
+  .form-grid { grid-template-columns: 1fr; }
+  .founder-grid { grid-template-columns: 1fr; }
+  .mv-grid { grid-template-columns: 1fr; }
+}
+@media (max-width: 700px) {
+  main section { padding: 52px 0; }
+  .prog-grid { grid-template-columns: 1fr; }
+  .fields { grid-template-columns: 1fr; }
+  .blog-grid { grid-template-columns: 1fr; }
+  .event-cards { grid-template-columns: 1fr; }
+  .testimonial-grid { grid-template-columns: 1fr; }
+  .update-grid { grid-template-columns: 1fr; }
+  .lamps { grid-template-columns: 1fr; }
+}
+@media (max-width: 640px) {
+  .journey-nav { display: none; }
+  #lo-trinh .steps { grid-template-columns: 1fr; }
+  #lo-trinh .step { border-left: none; border-top: 1px solid #e2d9c2; }
+  #lo-trinh .step:first-child { border-top: none; }
+  #roadmapTitle { font-size: 1.6rem; }
+  .equation { padding: 26px 18px; }
+  .equation .eq { flex-wrap: wrap; gap: 12px; font-size: clamp(20px, 5.4vw, 24px); }
+  .equation .eq .box { padding: 16px 18px; }
+  .hero { padding: 52px 0; }
+  .hero-cta { flex-direction: column; }
+}
+@media (max-width: 560px) {
+  .foot-grid { grid-template-columns: 1fr; gap: 34px; }
+  .foot-brand { text-align: center; }
+}
+@media (hover: none) {
+  .card:hover, .field-card:hover, .mv-card:hover, .voice-card:hover, .blog-grid article:hover, .event-card:hover, .update-card:hover, .prog-card:hover, .biz article:hover, .lamp:hover, .prog-help:hover, .equation:hover, #lo-trinh .step:hover, .btn:hover { transform: none; box-shadow: none; }
+}
+
+/* --- Thu vien Master + Blog rieng --- */
+.library-page, .blog-page { padding: 3rem 0; }
+.library-banner {
+  text-align: center; padding: 3rem 1.5rem; margin-bottom: 2rem;
+  background: linear-gradient(180deg, #fffdf6, #f8f1d7);
+  border: 1px solid #c6a45c; border-radius: var(--radius);
+  box-shadow: 0 18px 40px rgba(122, 95, 12, 0.15);
+}
+.library-banner h1 { margin: 0.5rem 0; }
+.library-banner p { max-width: 720px; margin: 0 auto; }
+.library-layout { display: grid; grid-template-columns: minmax(0, 1fr) 320px; gap: 1.5rem; align-items: start; }
+.library-main h2 { margin-top: 0.5rem; }
+.library-cover { margin: 1rem 0; }
+.library-cover img { width: 100%; height: auto; border: 1px solid #c6a45c; border-radius: var(--radius); }
+.library-video { position: relative; aspect-ratio: 16 / 9; margin: 1rem 0; }
+.library-video iframe { position: absolute; inset: 0; width: 100%; height: 100%; border: 1px solid #c6a45c; border-radius: var(--radius); }
+.library-side-head { display: flex; justify-content: space-between; align-items: center; gap: 0.5rem; }
+.library-side-head h2 { font-size: 1.15rem; margin: 0; }
+.library-side-head .btn { white-space: nowrap; flex-shrink: 0; }
+.library-list { list-style: none; margin: 1rem 0 0; padding: 0; display: grid; gap: 0.5rem; }
+.library-list a {
+  display: block; padding: 0.7rem 0.9rem; min-height: 44px;
+  border: 1px solid #e2d9c2; border-radius: 10px; text-decoration: none;
+}
+.library-list a small { display: block; color: var(--muted); font-size: 0.85rem; }
+.library-list a.active { background: linear-gradient(135deg, #8a6d1f, #c9a227); color: #fff; border-color: #c9a227; font-weight: 700; }
+.library-list a.active small { color: rgba(255, 255, 255, 0.85); }
+.library-search { width: 100%; min-height: 44px; margin-top: 1rem; padding: 0.6rem 0.9rem; font-size: 1rem; border: 1px solid #c6a45c; border-radius: 10px; background: #fffdf6; color: var(--ink); }
+.library-search:focus { outline: 2px solid #c9a227; outline-offset: 1px; }
+/* Link cheo tu muc tong quan toi khai niem chi tiet trong bai viet. */
+.library-link { color: var(--gold-dark); text-decoration: underline; text-underline-offset: 3px; font-weight: 700; }
+.library-link:hover { color: #8a6d1f; }
+@media (hover: hover) {
+  .library-list a:hover { border-color: rgba(212, 175, 55, 0.6); transform: translateY(-2px); box-shadow: 0 12px 26px rgba(0, 0, 0, 0.22); }
+}
+.blog-page .blog-grid { margin-top: 1.5rem; }
+.blog-page .blog-grid h2 { font-size: 1.25rem; }
+.blog-page .blog-grid h2 a { text-decoration: none; }
+.blog-article p { font-size: 1.05rem; line-height: 1.85; }
+@media (max-width: 900px) {
+  .library-layout { grid-template-columns: 1fr; }
+  .library-side { order: -1; }
+}
+
+/* ===== Prompt 11 — Danh gia 11 phuong dien (chi dung token san co) ===== */
+.assessment-intro { margin-bottom: 1.5rem; }
+.assessment-intro h1 { font-size: clamp(1.75rem, 4vw, 2.6rem); }
+.assessment-progress { font-size: 1rem; margin-bottom: 0.5rem; }
+.assessment-bar { height: 10px; border-radius: 999px; background: var(--bg-champagne); border: 1px solid rgba(168, 132, 28, 0.4); overflow: hidden; margin-bottom: 1.5rem; }
+.assessment-bar span { display: block; height: 100%; background: linear-gradient(90deg, #c9a227, #d4af37); transition: width 200ms ease; }
+.assessment-form { display: grid; gap: 1.5rem; }
+.assessment-dimension h2 { font-size: 1.35rem; }
+.assessment-question { border: 0; border-top: 1px solid rgba(168, 132, 28, 0.25); margin: 1rem 0 0; padding: 1rem 0 0; }
+.assessment-question legend { font-weight: 700; font-size: 1rem; padding: 0; }
+.assessment-question .hint { margin: 0.25rem 0 0.75rem; }
+.assessment-scale { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+.assessment-scale-option { display: inline-flex; align-items: center; gap: 0.4rem; min-height: 44px; padding: 0.4rem 0.8rem; border: 1px solid rgba(168, 132, 28, 0.55); border-radius: 999px; background: #fff; cursor: pointer; font-size: 1rem; }
+.assessment-scale-option input { accent-color: var(--gold-strong); width: 18px; height: 18px; margin: 0; }
+.assessment-scale-option:has(input:checked) { background: linear-gradient(135deg, #c9a227, #d4af37); font-weight: 700; }
+.assessment-scale-num { font-weight: 800; }
+.assessment-submit { margin-top: 0.5rem; }
+.assessment-result { display: grid; gap: 1.5rem; margin: 1.5rem 0; }
+.assessment-summary h2, .assessment-scores h2 { font-size: 1.5rem; }
+.assessment-overall { font-size: 1.15rem; }
+.assessment-radar { max-width: 520px; margin: 0 auto; }
+.assessment-radar .radar-label { font-size: 13px; fill: var(--ink); font-weight: 600; }
+.radar-legend { text-align: center; font-size: 1rem; }
+.radar-legend-now { color: var(--gold-strong); font-weight: 700; }
+.radar-legend-prev { color: var(--ink-soft); font-weight: 700; }
+.assessment-score-list { list-style: none; margin: 0; padding: 0; display: grid; gap: 1rem; }
+.assessment-score-row .assessment-bar { margin: 0.5rem 0 0; }
+.assessment-score-head { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 0.5rem; }
+.assessment-score-value { font-weight: 700; white-space: nowrap; }
+.assessment-two-col { display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem; }
+.assessment-two-col h2 { font-size: 1.25rem; }
+.assessment-roadmap { list-style: none; margin: 0; padding: 0; display: grid; gap: 1rem; }
+.assessment-roadmap h3 { font-size: 1.15rem; }
+.assessment-actions { display: flex; flex-wrap: wrap; gap: 0.75rem; align-items: center; }
+.assessment-disclaimer { font-size: 1rem; }
+.assessment-history { margin-top: 2rem; }
+.assessment-history-list { list-style: none; margin: 0; padding: 0; display: grid; gap: 1rem; }
+.assessment-history-head { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 0.75rem; align-items: flex-start; }
+.assessment-delta-table { width: 100%; border-collapse: collapse; margin-top: 1rem; font-size: 1rem; }
+.assessment-delta-table th, .assessment-delta-table td { border-bottom: 1px solid rgba(168, 132, 28, 0.25); padding: 0.5rem 0.25rem; text-align: left; }
+.assessment-delta-table th[scope="row"] { font-weight: 600; }
+@media (max-width: 700px) {
+  .assessment-two-col { grid-template-columns: 1fr; }
+  .assessment-scale-option { flex: 1 1 45%; }
+  .assessment-radar .radar-label { font-size: 11px; }
+}
+
+/* --- Cong dong VISFAR (Prompt 13) + Gamification (Prompt 14), GĐ2 --- */
+.success-text { color: #1e6b34; font-weight: 600; }
+.error-text { color: #b3261e; font-weight: 600; }
+.community-list { display: grid; gap: 1rem; }
+.community-post h3 { font-size: 1.25rem; }
+.reaction-row { display: flex; flex-wrap: wrap; gap: 0.5rem; }
+.reaction-btn.active { border-color: var(--gold-strong); background: var(--bg-champagne); font-weight: 700; }
+.badge-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 1rem; }
+.badge-card { text-align: center; }
+.badge-card .badge-icon { font-size: 2.5rem; margin: 0.25rem 0; }
+.badge-card.locked { opacity: 0.75; }
+.badge-card.locked .badge-icon { filter: grayscale(1); }
+@media (max-width: 700px) {
+  .badge-grid { grid-template-columns: 1fr; }
+}
+
+/* ===== Prompt 12 — AI Mentor (chi dung token san co) ===== */
+.ai-mentor-page { max-width: 1080px; margin: 0 auto; padding: 1.5rem 1rem 3rem; }
+.ai-mentor-intro { font-size: 1rem; line-height: 1.7; text-align: justify; }
+.ai-mentor-mode { font-size: 1rem; background: #fff; border: 1px solid rgba(168, 132, 28, 0.6); border-radius: var(--radius); padding: 0.75rem 1rem; }
+.ai-mentor-layout { display: grid; grid-template-columns: 260px 1fr; gap: 1.5rem; margin-top: 1.5rem; align-items: start; }
+.ai-mentor-history { background: #fff; border: 1px solid rgba(168, 132, 28, 0.4); border-radius: var(--radius); padding: 1rem; }
+.ai-mentor-history-head { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 0.5rem; }
+.ai-mentor-history-head h2 { font-size: 1.15rem; margin: 0; }
+.ai-mentor-new { min-height: 44px; padding: 0.4rem 0.8rem; font-size: 1rem; }
+.ai-mentor-empty-note { font-size: 1rem; }
+.ai-mentor-session-list { list-style: none; margin: 0.75rem 0 0; padding: 0; display: grid; gap: 0.5rem; }
+.ai-mentor-session-list button { width: 100%; text-align: left; min-height: 44px; padding: 0.6rem 0.75rem; font-size: 1rem; background: var(--bg-champagne); border: 1px solid rgba(168, 132, 28, 0.35); border-radius: 8px; cursor: pointer; overflow: hidden; text-overflow: ellipsis; white-space: nowrap; }
+.ai-mentor-session-list button.active { background: linear-gradient(135deg, #c9a227, #d4af37); font-weight: 700; }
+.ai-mentor-chat { background: #fff; border: 1px solid rgba(168, 132, 28, 0.4); border-radius: var(--radius); padding: 1.25rem; min-width: 0; }
+.ai-mentor-empty p { font-size: 1rem; }
+.ai-mentor-suggestions { list-style: none; margin: 0; padding: 0; display: flex; flex-wrap: wrap; gap: 0.5rem; }
+.ai-mentor-suggestions button { min-height: 44px; padding: 0.5rem 0.9rem; font-size: 1rem; background: var(--bg-champagne); border: 1px solid rgba(168, 132, 28, 0.55); border-radius: 999px; cursor: pointer; }
+.ai-mentor-messages { list-style: none; margin: 0; padding: 0; display: grid; gap: 1rem; }
+.ai-mentor-msg { border-radius: var(--radius); padding: 1rem 1.1rem; }
+.ai-mentor-msg-user { background: var(--bg-champagne); border: 1px solid rgba(168, 132, 28, 0.35); margin-left: 2rem; }
+.ai-mentor-msg-assistant { background: #fffdf5; border: 1px solid rgba(168, 132, 28, 0.6); margin-right: 2rem; }
+.ai-mentor-answer { font-size: 1rem; line-height: 1.8; text-align: justify; white-space: pre-line; margin: 0; }
+.ai-mentor-sources { margin-top: 0.75rem; font-size: 1rem; }
+.ai-mentor-sources p { margin: 0 0 0.25rem; font-weight: 700; }
+.ai-mentor-sources ul { margin: 0; padding-left: 1.25rem; }
+.ai-mentor-enrolled { color: var(--ink-soft); }
+.ai-mentor-feedback { margin-top: 0.75rem; font-size: 1rem; display: flex; flex-wrap: wrap; gap: 0.5rem; align-items: center; }
+.ai-mentor-feedback button { min-height: 44px; padding: 0.4rem 0.8rem; font-size: 1rem; background: #fff; border: 1px solid rgba(168, 132, 28, 0.55); border-radius: 999px; cursor: pointer; }
+.ai-mentor-thinking { font-size: 1rem; }
+.ai-mentor-mode-note { font-size: 1rem; color: var(--ink-soft); }
+.ai-mentor-warning, .ai-mentor-error { font-size: 1rem; border: 1px solid #b3261e; border-radius: var(--radius); padding: 0.75rem 1rem; background: #fff; }
+.ai-mentor-form { display: grid; gap: 0.75rem; margin-top: 1.25rem; }
+.ai-mentor-form textarea { width: 100%; font-size: 1rem; line-height: 1.6; padding: 0.75rem 1rem; border: 1px solid rgba(168, 132, 28, 0.6); border-radius: var(--radius); resize: vertical; min-height: 64px; font-family: inherit; }
+.ai-mentor-form .btn { min-height: 48px; font-size: 1rem; }
+.ai-mentor-count { font-size: 1rem; color: var(--ink-soft); margin: 0.5rem 0 0; }
+.ai-mentor-disclaimer { font-size: 1rem; color: var(--ink-soft); text-align: justify; }
+@media (max-width: 900px) {
+  .ai-mentor-layout { grid-template-columns: 1fr; }
+  .ai-mentor-msg-user { margin-left: 0; }
+  .ai-mentor-msg-assistant { margin-right: 0; }
+}
+@media (hover: hover) {
+  .ai-mentor-session-list button:hover, .ai-mentor-suggestions button:hover, .ai-mentor-feedback button:hover { border-color: var(--gold-strong); box-shadow: 0 4px 16px rgba(168, 132, 28, 0.25); }
+}
